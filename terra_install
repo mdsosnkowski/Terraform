@@ -3,7 +3,10 @@
 # git clone https://github.com/ClarityUnderstanding/terraform.git
 
 # Change to the directory "terraform"
-cd terraform
+# cd terraform
+
+# Run install script
+# ./terra_install
 
 # Download from GitHub your config into the Cloud space on Azure
 wget https://releases.hashicorp.com/terraform/1.0.8/terraform_1.0.8_linux_amd64.zip
