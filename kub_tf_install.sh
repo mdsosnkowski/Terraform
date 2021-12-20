@@ -3,6 +3,8 @@
 #
 # Update linux
 sudo yum update
+# Change to directory
+cd lab-deploy-kubernetes/
 # Create cluster
 kind create cluster --name lab-terraform-kubernetes --config  kind-config.yaml
 # Get info of Host ip, Certificates
