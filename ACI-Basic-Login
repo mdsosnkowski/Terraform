@@ -1,0 +1,13 @@
+# ACI-Basic-Login
+#URL: https://sandboxapicdc.cisco.com
+#User: admin
+#Password: ciscopsdt
+
+import requests
+from requests.auth import HTTPBasicAuth
+
+response = requests.get('https://sandboxapicdc.cisco.com/', auth=('admin', 'ciscopsdt'))
+print('This code should return 200 which means useraname and password were accepted')
+print(response)
+print('')
+#print(response.text)

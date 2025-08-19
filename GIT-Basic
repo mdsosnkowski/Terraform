@@ -1,0 +1,90 @@
+# GIT - BASIC - LAB 
+# Based on Cisco DevNet LaB "brief into to GIT"
+# On the Right Hand Panel click on "Shell"
+# To accomplish this macro workflow:
+# Step	Action	Git Commands
+# 1	Clone the Remote Repository	git clone <url>
+# 2	Create and Checkout a Local Branch	git checkout -b <new branch name>
+# 3	Incrementally Commit Changes	git add <new or modified file>
+# git commit -m "Commit Message"
+
+# Get the code from compile, copy and paste the line below
+# ? What was the output what did it show you that GIT Did ?
+git clone https://github.com/CiscoDevNet/dne-dna-code
+
+# Show the files in a list format using "ls -ll"
+ls -al 
+
+# Change Directory (cd) into the "dne-dna-code" directory: 
+cd dne-dna-code
+
+# Type in "git status"
+# ? What was the output and why?
+git status
+
+# Make a new branch you can use with the -b command 
+git checkout -b mycode 
+
+# Confirm that your branch is called "mycode"
+git status 
+
+# Keep your branch up-to-date from github 
+# If there are no new changes will you get a notificaiton ?
+git fetch 
+
+# Show how changes tracked by GIT of the file "change_me.txt"
+cd /intro-python/git-basics/
+
+# should show text
+cat change_me.txt
+
+# Overwrite the existing text 
+echo MY-ADD > change_me.txt 
+
+# ? Did you see the text "MY-ADD" text
+cat change_me.txt
+
+# Confirm with Git using Diff and Status for file changes
+# ? What was the output from  GIT ?
+git status  
+
+# Show what has changed in the file
+# ? What is the -- and what is the ++  ?
+git diff 
+
+# To undo changes to a file you can put back to last commit 
+# lists the directory path for you to use with GIT to use
+pwd 
+
+# Example path - Copy this to use for the Reset to original text 
+:/home/....-dna-code/intro-python/git-basics
+
+# Resets to original text
+git checkout   /home/....-dna-code/intro-python/git-basics 
+
+# ? Do you see the original text and not the new text ?
+cat change_me.txt 
+
+# To reset the whole of a working directory, 
+# ? what is the response from Git when you do the following command ?
+# ? Which branch was "reset"
+ git reset --hard
+ git status
+
+# Delete the whole downloaded branch, 
+# ? Did the branch detele or was there an error ?
+git branch --delete --force <branch name> # ie "mycode"
+
+# Delete a branch that is "Checked out"
+# Fix - check out another branch like the "Master" - Then delete
+# ? What was GIT's response ?
+git checkout master 
+git branch --delete --force <branch name> # ie "mycode"
+
+# To make commits you need to setup one time the following
+$ git config --global user.name "Your Name"
+$ git config --global user.email your@email-address.com
+
+# For committing use the -m option to avoid opening the text editor
+$ git add intro-python/git-basics/change_me.txt
+$ git commit -m "Git Commit - Done."
