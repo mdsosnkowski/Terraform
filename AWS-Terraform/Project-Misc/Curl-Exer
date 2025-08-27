@@ -1,0 +1,24 @@
+~/EvergreenSuperbHexadecimal-2/terra$ curl -v telnet://avalon-rpg.com:23
+* Rebuilt URL to: telnet://avalon-rpg.com:23/
+*   Trying 35.185.12.150...
+* TCP_NODELAY set
+* Connected to avalon-rpg.com (35.185.12.150) port 23 (#0)
+
+ls
+ "We are such stuff as dreams are made on;
+  and our little life, is rounded with sleep."
+
+          | || |
+          | || |
+          ============
+
+
+=========================
+curl -v telnet://avalon-rpg.com:23
+!
+ curl -v http://www.example.com:8443
+ !
+ curl -v https://www.google.com:80
+ !
+ curl -v telnet://127.0.0.1:22
+ !
