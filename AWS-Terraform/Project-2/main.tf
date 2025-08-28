@@ -1,6 +1,4 @@
-# Terraform Example 1: Default VPC and EC2 with no SSH
-# Note: the Security Group added after build did not allow for ssh from instnace connect 
-# Fix: access using instance connect
+# Terraform Project 2: Git Hub Actions to launch Default VPC and EC2 with no SSH
 terraform {
   required_providers {
     aws = {
