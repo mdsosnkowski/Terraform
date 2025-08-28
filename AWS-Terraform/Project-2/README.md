@@ -1,4 +1,4 @@
-# Project 2 – CI/CD Build using GitHub Actions
+# Project 2 – CICD Build using GitHub Actions
 
 ## Overview
 This project automates the **build and deployment** of **Project 1** infrastructure using **GitHub Actions**.  
