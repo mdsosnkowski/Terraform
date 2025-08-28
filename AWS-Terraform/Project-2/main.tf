@@ -1,4 +1,4 @@
-# Terraform Project 2: Git Hub Actions to launch Default VPC and EC2 with no SSH
+# Terraforms Project 2: Git Hub Actions to launch Default VPC and EC2 with no SSH
 terraform {
   required_providers {
     aws = {
