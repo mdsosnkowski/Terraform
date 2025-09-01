@@ -58,7 +58,8 @@ resource "aws_instance" "web" {
 # It should now pull state from the S3 bucket
 # not your local terraform.tfstate.
 # Check: terraform state list
-# for the bucket, copy the backend bucket suffix: code-bucket-<suffix>
+# for the bucket, copy the backend bucket suffix: 
+# code-bucket-<suffix>
 terraform {
   backend "s3" {
     bucket         = "code-bucket-f25f091b" # from statefile
