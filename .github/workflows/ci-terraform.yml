@@ -1,0 +1,41 @@
+name: Terraform CI Pipeline
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  terraform:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Terraform
+        uses: hashicorp/setup-terraform@v3
+
+      # Step 1: Terraform fmt check
+      - name: Terraform Format Check
+        run: terraform fmt -check -recursive
+
+      # Step 2: Initialize Terraform
+      - name: Terraform Init
+        run: terraform init
+
+      # Step 3: Validate Terraform
+      - name: Terraform Validate
+        run: terraform validate
+
+      # Step 4: Plan (optional safeguard before apply)
+      - name: Terraform Plan
+        run: terraform plan -out=tfplan
+
+      # Step 5: Apply (only on push to main, not PRs)
+      # github.ref → is a built-in GitHub Actions context variable. 
+      # It gives the full Git ref that triggered the workflow
+      - name: Terraform Apply
+        if: github.ref == 'refs/heads/main'
+        run: terraform apply -auto-approve tfplan
