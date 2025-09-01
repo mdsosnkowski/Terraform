@@ -43,4 +43,4 @@ jobs:
       - name: Terraform Apply
         if: github.ref == 'refs/heads/main'
         run: terraform apply -auto-approve 
-        working-directory: ./AWS-Terraform/Project-3-Github-Actions/
+        working-directory: AWS-Terraform/Project-3-Github-Actions/main/
