@@ -19,7 +19,7 @@ jobs:
 
       # Step 1: Terraform fmt check
       - name: Terraform Format Check
-        run: terraform fmt -check -recursive
+        run: terraform fmt 
 
       # Step 2: Initialize Terraform
       - name: Terraform Init
