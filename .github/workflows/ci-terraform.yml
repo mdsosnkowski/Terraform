@@ -37,5 +37,5 @@ jobs:
       # github.ref → is a built-in GitHub Actions context variable. 
       # It gives the full Git ref that triggered the workflow
       - name: Terraform Apply
-        if: github.ref == 'refs/heads/main'
+        #if: github.ref == 'refs/heads/main'
         run: terraform apply -auto-approve
