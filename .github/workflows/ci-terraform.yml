@@ -42,5 +42,5 @@ jobs:
       # It gives the full Git ref that triggered the workflow
       - name: Terraform Apply
         if: github.ref == 'refs/heads/main'
-        run: terraform apply -auto-approve main.tf
+        run: terraform apply -auto-approve 
         working-directory: AWS-Terraform/Project-3-Github-Actions/
