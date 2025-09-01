@@ -33,9 +33,9 @@ jobs:
         working-directory: AWS-Terraform/Project-3-Github-Actions/
 
       # Step 4: Plan (optional safeguard before apply)
-      - name: Terraform Plan
-        run: terraform plan -out=tfplan
-        working-directory: AWS-Terraform/Project-3-Github-Actions/
+      #- name: Terraform Plan
+      #  run: terraform plan -out=tfplan
+      #  working-directory: AWS-Terraform/Project-3-Github-Actions/
 
       # Step 5: Apply (only on push to main, not PRs)
       # github.ref → is a built-in GitHub Actions context variable. 
