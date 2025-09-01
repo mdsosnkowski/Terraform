@@ -30,12 +30,12 @@ jobs:
         run: terraform validate
 
       # Step 4: Plan (optional safeguard before apply)
-      #- name: Terraform Plan
-      #  run: terraform plan -out=tfplan
+      - name: Terraform Plan
+        run: terraform plan -out=tfplan
 
       # Step 5: Apply (only on push to main, not PRs)
       # github.ref → is a built-in GitHub Actions context variable. 
       # It gives the full Git ref that triggered the workflow
       - name: Terraform Apply
-        #if: github.ref == 'refs/heads/main'
-        run: terraform apply -auto-approve
+        if: github.ref == 'refs/heads/main'
+        run: terraform apply -auto-approve tfplan
