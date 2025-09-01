@@ -1,7 +1,7 @@
-# Project 2 – CICD Build using GitHub Actions for code.
+# Project 3 – CICD Build using GitHub Actions for code.
 
 ## Overview
-This project automates the **build and deployment** of **Project 1** infrastructure using **GitHub Actions**.  
+This project automates the **build and deployment** of **Project 1 and 2** infrastructure using **GitHub Actions**.  
 The workflow provisions AWS resources defined in Project 1 whenever changes are pushed to the repository.  
 
 ---
