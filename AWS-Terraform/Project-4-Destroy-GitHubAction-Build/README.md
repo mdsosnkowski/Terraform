@@ -3,6 +3,20 @@
 ## Overview
 This project automates the **destroy of the build and deployment** of **Project 3 ** infrastructure using **GitHub Actions**.  
 The workflow provisions AWS resources defined in Project 1 whenever changes are pushed to the repository.  
+1. Create the backend S3 and DDB first as this will hold the statefiles and have the lock.
+2. Create the main infrastructure and migrate the state to the backend S3 and DDB.Get the name of the bucket from the command line and put it into the location for the "backend s3" resource.
+  a. main$ aws s3 ls
+  b. 2025-09-02 14:55:29 code-bucket-9e8fae93 <<this name
+  c. Terraform init # to provision the resources.
+    main$ terraform init
+      Initializing the backend...
+
+      Successfully configured the backend "s3"! Terraform will automatically
+      use this backend unless the backend configuration changes.
+        Initializing provider plugins...
+      - Finding hashicorp/aws versions matching "~> 6.0".
+
+  d. Terraform apply # to launch the build proces
 
 ---
 

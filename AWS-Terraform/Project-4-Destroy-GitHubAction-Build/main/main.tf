@@ -62,7 +62,7 @@ resource "aws_instance" "web" {
 # code-bucket-<suffix> Test
 terraform {
   backend "s3" {
-    bucket         = "code-bucket-f25f091b" # from statefile
+    bucket         = "code-bucket-9e8fae93" # Backend S3 bucket
     key            = "terraform.tfstate"
     region         = "us-east-1" # change if needed
     dynamodb_table = "Hcl-lock-table"
