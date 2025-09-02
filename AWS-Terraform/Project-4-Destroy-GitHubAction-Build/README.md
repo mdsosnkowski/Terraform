@@ -16,6 +16,20 @@ Right now, your workflow only builds (applies) infrastructure. Terraform doesn�
 
 ### Example: `destroy.yml` workflow
 
+…the destroy workflow only runs when you manually trigger it. Here’s how to do that in GitHub:
+
+Go to your GitHub repo.
+
+Click the Actions tab.
+
+On the left-hand side, you’ll see a list of workflows (your “Terraform CI Pipeline” and the new “Terraform Destroy Pipeline”).
+
+Select Terraform Destroy Pipeline.
+
+On the right, you’ll see a “Run workflow” button (green).
+
+Click it → GitHub spins up the job and runs terraform destroy -auto-approve with your AWS credentials.
+
 You can add a `destroy.yml` workflow that you trigger from the GitHub Actions UI (`workflow_dispatch`):
 
 ```yaml

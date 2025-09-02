@@ -14,12 +14,12 @@ jobs:
       - name: Set up Terraform
         uses: hashicorp/setup-terraform@v3
 
-      # Init
+      # Init - change to work-directory to the infra you are removing
       - name: Terraform Init
         run: terraform init
         working-directory: AWS-Terraform/Project-4-Destroy-GitHubAction-Build/main
 
-      # Destroy
+      # Destroy - change to work-directory to the infra you are removing
       - name: Terraform Destroy
         run: terraform destroy -auto-approve
         working-directory: AWS-Terraform/Project-4-Destroy-GitHubAction-Build/main
