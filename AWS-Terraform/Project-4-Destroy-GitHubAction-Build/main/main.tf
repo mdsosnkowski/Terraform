@@ -60,12 +60,12 @@ resource "aws_instance" "web" {
 # Check: terraform state list
 # for the bucket, copy the backend bucket suffix: 
 # code-bucket-<suffix> Test
-#terraform {
-#  backend "s3" {
-#    bucket         = "code-bucket-f25f091b" # from statefile
-#    key            = "terraform.tfstate"
-#    region         = "us-east-1" # change if needed
-#    dynamodb_table = "Hcl-lock-table"
-#    encrypt        = true
-#  }
-#}
+terraform {
+  backend "s3" {
+    bucket         = "code-bucket-f25f091b" # from statefile
+    key            = "terraform.tfstate"
+    region         = "us-east-1" # change if needed
+    dynamodb_table = "Hcl-lock-table"
+    encrypt        = true
+  }
+}
