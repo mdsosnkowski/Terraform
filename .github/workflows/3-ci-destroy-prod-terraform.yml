@@ -1,4 +1,4 @@
-name: Terraform Destroy Pipeline
+name: 3. Terraform Destroy Pipeline Production
 # Step 3 which destroys the production infrastructure in main.tf
 on:
   workflow_dispatch:   # allows you to trigger manually

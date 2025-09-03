@@ -1,4 +1,4 @@
-name: Terraform CI Pipeline
+name: 1. Terraform CI Pipeline Backend
 # Step 1 which builds the S3 and DDB infrastructure in backend.tf
 on:
   workflow_dispatch:   # allows you to trigger manually

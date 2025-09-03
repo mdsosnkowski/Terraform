@@ -1,4 +1,4 @@
-name: Terraform Destroy Pipeline
+name: 4. Terraform Destroy Pipeline Backend
 # Step 4 which destroys the S3 and DDB bootstrap-backend infrastructure in backend.tf
 on:
   workflow_dispatch:   # allows you to trigger manually
