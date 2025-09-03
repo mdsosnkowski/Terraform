@@ -16,7 +16,7 @@ jobs:
 
       - name: Terraform Init
         run: terraform init -input=false
-        working-directory: AWS-Terraform/bootstrap
+        working-directory: AWS-Terraform/Project-5-Production-GitHubAction-Build/bootstrap-backend
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -24,7 +24,7 @@ jobs:
 
       - name: Terraform Apply
         run: terraform apply -auto-approve -input=false
-        working-directory: AWS-Terraform/bootstrap
+        working-directory: AWS-Terraform/Project-5-Production-GitHubAction-Build/bootstrap-backend
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -35,4 +35,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: bootstrap-tfstate
-          path: AWS-Terraform/bootstrap/terraform.tfstate
+          path: AWS-Terraform/Project-5-Production-GitHubAction-Build/bootstrap-backend/terraform.tfstate
