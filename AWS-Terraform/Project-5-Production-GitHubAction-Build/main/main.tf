@@ -65,7 +65,8 @@ terraform {
     bucket         = "code-bucket-9e8fae93" # Backend S3 bucket
     key            = "terraform.tfstate"
     region         = "us-east-1" # change if needed
-    dynamodb_table = "Hcl-lock-table"
+    #dynamodb_table = "Hcl-lock-table"
+    use_lockfile = "Hcl-lock-table"
     encrypt        = true
   }
 }
