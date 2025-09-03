@@ -1,5 +1,5 @@
 name: Terraform Destroy Pipeline
-
+# Step 3 which destroys the production infrastructure in main.tf
 on:
   workflow_dispatch:   # allows you to trigger manually
 

@@ -1,7 +1,7 @@
-# Project 4 – CICD Terraform "Destroy" the build using GitHub Actions.
+# Project 5 – CICD Terraform for Production the build using GitHub Actions.
 
 ## Overview
-This project automates the **destroy of the build and deployment** of **Project 3 ** infrastructure using **GitHub Actions**.  
+This project automates the **Production of the build, deployment, and destroy** of **Project 4 ** infrastructure using **GitHub Actions**.  
 The workflow provisions AWS resources defined in Project 1 whenever changes are pushed to the repository.  
 1. Create the backend S3 and DDB first as this will hold the statefiles and have the lock.
 2. Create the main infrastructure and migrate the state to the backend S3 and DDB.Get the name of the bucket from the command line and put it into the location for the "backend s3" resource.

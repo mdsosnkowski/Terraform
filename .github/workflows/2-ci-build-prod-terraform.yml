@@ -1,5 +1,5 @@
 name: Terraform CI Pipeline
-
+# Step 2 which builds the production infrastructure in main.tf
 on:
   workflow_dispatch:   # allows you to trigger manually
   #push:
@@ -21,17 +21,17 @@ jobs:
       # Step 1: Terraform fmt check
       - name: Terraform Format Check
         run: terraform fmt
-        working-directory: AWS-Terraform/Project-4-Destroy-GitHubAction-Build/main
+        working-directory: AWS-Terraform/Project-5-Production-GitHubAction-Build/main
 
       # Step 2: Initialize Terraform
       - name: Terraform Init
         run: terraform init
-        working-directory: AWS-Terraform/Project-4-Destroy-GitHubAction-Build/main
+        working-directory: AWS-Terraform/Project-5-Production-GitHubAction-Build/main
 
       # Step 3: Validate Terraform
       - name: Terraform Validate
         run: terraform validate
-        working-directory: AWS-Terraform/Project-4-Destroy-GitHubAction-Build/main
+        working-directory: AWS-Terraform/Project-5-Production-GitHubAction-Build/main
 
       # Step 4: Plan (optional safeguard before apply)
       #- name: Terraform Plan
@@ -44,7 +44,7 @@ jobs:
       - name: Terraform Apply
         if: github.ref == 'refs/heads/main'
         run: terraform apply -auto-approve 
-        working-directory: AWS-Terraform/Project-4-Destroy-GitHubAction-Build/main
+        working-directory: AWS-Terraform/Project-5-Production-GitHubAction-Build/main
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
