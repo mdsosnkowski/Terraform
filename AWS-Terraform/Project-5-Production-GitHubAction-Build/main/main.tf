@@ -66,7 +66,7 @@ terraform {
     key            = "terraform.tfstate"
     region         = "us-east-1" # change if needed
     #dynamodb_table = "Hcl-lock-table"
-    use_lockfile = "Hcl-lock-table"
+    use_lockfile = true
     encrypt        = true
   }
 }
