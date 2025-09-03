@@ -9,10 +9,10 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up Terraform
-        uses: hashicorp/setup-terraform@v3
+        uses: hashicorp/setup-terraform@v4
 
       - name: Terraform Init
         run: terraform init -input=false
@@ -32,7 +32,7 @@ jobs:
 
       # Save state file so destroy workflow can reuse it
       - name: Upload state file
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: bootstrap-tfstate
           path: AWS-Terraform/Project-5-Production-GitHubAction-Build/bootstrap-backend/terraform.tfstate
