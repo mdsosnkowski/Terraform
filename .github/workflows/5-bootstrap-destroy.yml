@@ -1,4 +1,4 @@
-name: Bootstrap Destroy
+name: 5-bootstrap-destroy
 
 on:
   workflow_dispatch:
