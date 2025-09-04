@@ -6,8 +6,14 @@ This project automates the **Production of the build, deployment, and destroy** 
 1. Create the main infrastructure and use GitHub Artifacts to store the statefile.
 2. On GitHub go to actions and run the "terraform-destroy" workflow file.
 
+## ISSUE!!
+A destroy terraform actions script will  not be able to look at the Github archive and find the artifact terraform-state.
+Therefore, either download the artifact locally and put it into the repo for the destruction or...  
+Use a two build method: 1st create a backend as in Project 4 which holds an S3 and DDB for the terraform-state file.
+Then, build the production file and migrated the backend to the S3/DDB locations.
+
 ## Purpose
-What GitHub Artifacts Are
+What are GitHub Artifacts
 
 Artifacts are files or directories produced by a workflow run (logs, build outputs, compiled binaries, Terraform state, etc.).
 They are stored outside the repository in GitHub’s cloud storage.
