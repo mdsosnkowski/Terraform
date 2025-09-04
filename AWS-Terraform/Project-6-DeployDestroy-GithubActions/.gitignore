@@ -1,0 +1,26 @@
+# === Terraform ===
+
+# Local plugin & module cache
+**/.terraform/*
+
+# State files
+*.tfstate
+*.tfstate.*
+
+# Crash logs
+crash.log
+crash.*.log
+
+# Variable files (may contain secrets, don’t commit)
+*.tfvars
+*.tfvars.json
+
+# Plan files (binary, not useful in git)
+*.plan
+
+# CLI config files
+.terraformrc
+terraform.rc
+
+# === VS Code (optional, keeps workspace junk out of git) ===
+.vscode/
