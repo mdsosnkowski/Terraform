@@ -49,24 +49,3 @@ resource "aws_instance" "web" {
     Name = "web-server"
   }
 }
-# Added block to have state on AWS as remote location.
-# Replace code-bucket-<your-random-suffix> 
-# with the actual bucket name that Terraform created
-# Find bucket name on console use: "aws s3 ls"
-# Initialize backend migration
-# terraform init -migrate-state
-# It should now pull state from the S3 bucket
-# not your local terraform.tfstate.
-# Check: terraform state list
-# for the bucket, copy the backend bucket suffix: 
-# code-bucket-<suffix> Test
-terraform {
-  backend "s3" {
-    bucket         = "code-bucket-9e8fae93" # Backend S3 bucket
-    key            = "terraform.tfstate"
-    region         = "us-east-1" # change if needed
-    #dynamodb_table = "Hcl-lock-table"
-    use_lockfile = true
-    encrypt        = true
-  }
-}
