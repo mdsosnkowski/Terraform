@@ -7,60 +7,70 @@ This project automates the **Production of the build, deployment, and destroy** 
 2. On GitHub go to actions and run the "terraform-destroy" workflow file.
 
 ## Purpose
-Right now, your workflow only builds (applies) infrastructure. Terraform doesn’t destroy unless you explicitly run `terraform destroy`. You don’t need a completely new workflow, but it’s often cleaner to keep **two separate workflows**:
+What GitHub Artifacts Are
 
-- **Deploy (Apply)** → runs on push to `main`  
-- **Destroy** → runs manually (so you don’t accidentally wipe infra)
+Artifacts are files or directories produced by a workflow run (logs, build outputs, compiled binaries, Terraform state, etc.).
+They are stored outside the repository in GitHub’s cloud storage.
+They are meant to share data between workflow jobs or preserve it after a run finishes.
 
----
+## Key Points
 
-### Example: `destroy.yml` workflow
+Artifacts are tied to a workflow run. They are not permanent unless you download and save them elsewhere.  
 
-…the destroy workflow only runs when you manually trigger it. Here’s how to do that in GitHub:
+Storage costs:
+Free accounts: 2 GB included for Actions storage.  
+Paid storage beyond quota is billed (~$0.25 per GB/month).  
+Most artifacts (like Terraform state) are tiny, so cost is negligible.  
 
-Go to your GitHub repo.
+Use cases:
+Passing build outputs to subsequent jobs.  
+Sharing files between different workflow runs.  
+Preserving state (like your bootstrap Terraform state).  
 
-Click the Actions tab.
+## How it works
 
-On the left-hand side, you’ll see a list of workflows (your “Terraform CI Pipeline” and the new “Terraform Destroy Pipeline”).
+Create/Upload Artifact
 
-Select Terraform Destroy Pipeline.
+Use the actions/upload-artifact action in your workflow.
 
-On the right, you’ll see a “Run workflow” button (green).
+Example:
 
-Click it → GitHub spins up the job and runs terraform destroy -auto-approve with your AWS credentials.
-
-You can add a `destroy.yml` workflow that you trigger from the GitHub Actions UI (`workflow_dispatch`):
-
-```yaml
-name: Terraform Destroy Pipeline
-
-on:
-  workflow_dispatch:   # allows you to trigger manually
-
-jobs:
-  terraform-destroy:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Set up Terraform
-        uses: hashicorp/setup-terraform@v3
-
-      # Init
-      - name: Terraform Init
-        run: terraform init
-        working-directory: AWS-Terraform/Project-4-Destroy-GitHubAction-Build/main
-
-      # Destroy
-      - name: Terraform Destroy
-        run: terraform destroy -auto-approve
-        working-directory: AWS-Terraform/Project-4-Destroy-GitHubAction-Build/main
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_DEFAULT_REGION: us-east-1
+- name: Upload artifact  
+  uses: actions/upload-artifact@v3  
+  with:  
+    name: terraform-state  
+    path: AWS-Terraform/bootstrap/terraform.tfstate  
 
 
+name → identifier for the artifact.  
+path → file or directory you want to upload.  
+
+Storage
+
+Artifacts are stored in GitHub’s cloud, not in your git repo.
+Each workflow run keeps its own copy.
+Download/Consume Artifact
+Use actions/download-artifact to pull the files into another job or workflow.
+
+- name: Download artifact  
+  uses: actions/download-artifact@v3  
+  with:  
+    name: terraform-state  
+    path: AWS-Terraform/bootstrap/  
+
+
+The files appear in the runner at the path you specify.  
+Terraform, scripts, or tests can then use them as if they were local.  
+
+Retention  
+By default, artifacts expire after 90 days.  
+You can set a shorter retention with retention-days.  
+After expiration, GitHub automatically deletes the artifact.  
+
+** Visual Flow
+Workflow Job 1
+   └─ generates terraform.tfstate
+        └─ upload-artifact → stored in GitHub cloud
+Workflow Job 2 / Another Workflow
+   └─ download-artifact → retrieved to runner
+        └─ terraform destroy uses state file
