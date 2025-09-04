@@ -9,7 +9,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up Terraform
         uses: hashicorp/setup-terraform@v3
@@ -19,7 +19,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: terraform-state
-          path: AWS-Terraform/Project-6-DeployDestroy-GithubActions/main
+          path: AWS-Terraform/Project-6-DeployDestroy-GithubActions/main/terraform.tfstate
 
       # Step 2: Initialize Terraform
       - name: Terraform Init
