@@ -16,7 +16,7 @@ jobs:
 
       # Step 1: Download the state file artifact
       - name: Download Terraform state artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: terraform-state
           path: AWS-Terraform/Project-6-DeployDestroy-GithubActions/main
@@ -42,7 +42,7 @@ jobs:
       # Step 3: Destroy resources
       - name: Terraform Destroy
         run: terraform destroy -auto-approve -input=false
-        working-directory: AWS-Terraform/Project-6-DeployDestroy-GithubActions/main
+        working-directory: AWS-Terraform/Project-6-DeployDestroy-GithubActions/main/terraform.tfstate
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
